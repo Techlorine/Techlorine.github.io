@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Techlorine&#39;s Temp Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Techlorine的临时Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Techlorine&#39;s Temp Blog">
+<meta property="og:url" content="https://techlorine.github.io/">
+<meta property="og:site_name" content="Techlorine&#39;s Temp Blog">
+<meta property="og:description" content="Techlorine的临时Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Techlorine">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Techlorine's Temp Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Techlorine&#39;s Temp Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爬爬爬，我最会爬了</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://techlorine.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-基于Mirai的QQ机器人方案" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/cv1dq4k1h7wa5xCP1znano.html" class="article-date">
+  <time class="dt-published" datetime="2020-08-11T21:45:14.000Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/cv1dq4k1h7wa5xCP1znano.html">基于Mirai的QQ机器人方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从8月2日T*ncent对晨风机器人作者提出恶臭诉讼的事件闹大之后，各路第三方QQ机器人方案的作者纷纷跑路。<code>Mirai</code>可以说是尚且可用的一款全开源机器人方案了，虽然随时都有被封杀的风险，但在T*ncent彻底更新QQ协议之前，机器人还是可用的。（希望TX在更新协议之前能把自家机器人搞好且给一些免费配额，否则真要逼人去挂外链搞Rocket.chat聊天室了…）  </p>
+<p>下面介绍一下尚且可用的Mirai相关组件。  </p>
+<h2 id="Mirai及相关项目"><a href="#Mirai及相关项目" class="headerlink" title="Mirai及相关项目"></a>Mirai及相关项目</h2><h3 id="Mirai本体"><a href="#Mirai本体" class="headerlink" title="Mirai本体"></a>Mirai本体</h3><ul>
+<li>机器人库，无法直接执行，需要在其他应用中调用。  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mamoe/mirai/tree/master">https://github.com/mamoe/mirai/tree/master</a></li>
+</ul>
+<h3 id="Mirai-Console"><a href="#Mirai-Console" class="headerlink" title="Mirai-Console"></a>Mirai-Console</h3><ul>
+<li>以Mirai机器人库为核心的机器人框架程序，分为后端和前端。  </li>
+<li>后端负责机器人服务、加载插件等，前端负责与机器人管理员交互。  </li>
+<li>无法直接执行，需要用启动器启动。  </li>
+<li>启动器<code>Mirai-console-wrapper</code>停更，推荐使用<code>MiraiOK</code>。（但据<code>MiraiOK</code>作者自述，这东西相当于wrapper的wrapper<del>无限套娃</del>）  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mamoe/mirai-console">https://github.com/mamoe/mirai-console</a></li>
+</ul>
+<h3 id="MiraiOK"><a href="#MiraiOK" class="headerlink" title="MiraiOK"></a>MiraiOK</h3><ul>
+<li>基于<code>Mirai-Console</code>和<code>Mirai</code>的一键启动包（用起来像酷Q）。  </li>
+<li>作者已删库，但可从其他人的Fork得到源代码和编译好的程序。  </li>
+<li>启动后往plugin文件夹里塞插件即可执行。  </li>
+<li>似乎是用Go语言开发的，全平台，详细看Github说明  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/2970884077/MiraiOK">https://github.com/2970884077/MiraiOK</a></li>
+</ul>
+<h3 id="Mirai-Plugin-Intellij"><a href="#Mirai-Plugin-Intellij" class="headerlink" title="Mirai-Plugin-Intellij"></a>Mirai-Plugin-Intellij</h3><ul>
+<li>IDEA(Jetbrain的JAVA IDE)插件，用于快速生成Mirai-Console插件模板。  </li>
+<li>Mirai全系使用Java和Kotlin开发，建议使用IDEA作为IDE。  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/project-mirai/mirai-console-intellij">https://github.com/project-mirai/mirai-console-intellij</a></li>
+</ul>
+<h3 id="Mirai-API-HTTP"><a href="#Mirai-API-HTTP" class="headerlink" title="Mirai-API-HTTP"></a>Mirai-API-HTTP</h3><ul>
+<li>一个集大成的<code>Mirai-Console</code>插件。  </li>
+<li>为其他语言使用<code>Mirai</code>提供HTTP API。  </li>
+<li>使用此API的话相当于你要编写并维护一个其他语言的服务器程序来处理机器人收到的消息并做出相应回应。（感觉是个大坑）<em>好像有人在维护一个基于Python的聊天Bot框架<a target="_blank" rel="noopener" href="https://github.com/GraiaProject/Application">Graia</a>。</em> </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/project-mirai/mirai-api-http">https://github.com/project-mirai/mirai-api-http</a></li>
+</ul>
+<h2 id="搞Mirai方案需要的准备"><a href="#搞Mirai方案需要的准备" class="headerlink" title="搞Mirai方案需要的准备"></a>搞Mirai方案需要的准备</h2><h3 id="Java-JDK"><a href="#Java-JDK" class="headerlink" title="Java JDK"></a>Java JDK</h3><p>1.8版本必装，若需要使用<code>Mirai-Console</code>图形化界面（前端），还需要安装1.11版本。同时部署的服务器也需要装Java。<br>注意配置系统环境变量<code>JAVA_HOME</code>。</p>
+<h3 id="Gradle-Gradlew"><a href="#Gradle-Gradlew" class="headerlink" title="Gradle &amp; Gradlew"></a>Gradle &amp; Gradlew</h3><p>Gradle是Java &amp; Kotlin项目经常使用的构建工具，用于执行项目的编译、打包与测试等。而Gradlew则是Gradle的Wrapper，由于不同项目使用的Gradle版本可能不同，可以使用Gradlew简化不同版本的Gradle本身的安装、部署。关于Gradle &amp; Gradlew的详细介绍可以参考网络资料。<br>推荐全局安装一个Gradle，并添加系统环境变量<code>GRADLE_HOME</code>，这样可以在命令行中直接使用gradle相关命令，在创建新项目及配合IDE时有用。<br>不过一般在Java &amp; Kotlin项目根目录中，经常可以见到Gradlew的可执行文件或者bat脚本。对于已有项目而言，切到项目文件夹执行项目中的Gradlew是更明智的选择。项目有Gradlew就使用Gradlew，没有的话一般也会使用Gradle生成一个Wrapper。下面是一些Gradle &amp; Gradlew的常用命令：  </p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gradle wrapper</code></td>
+<td>在当前目录生成一个Gradle Wrapper。</td>
+</tr>
+<tr>
+<td><code>.\gradlew.bat xxx</code></td>
+<td>Windows中执行Gradle Wrapper的xxx命令。</td>
+</tr>
+<tr>
+<td><code>.\gradlew xxx</code></td>
+<td>Linux中执行Gradle Wrapper的xxx命令。</td>
+</tr>
+<tr>
+<td><code>.\gradlew tasks</code></td>
+<td>查看当前项目可以执行的命令。</td>
+</tr>
+<tr>
+<td><code>.\gradlew build</code></td>
+<td>构建项目。</td>
+</tr>
+<tr>
+<td><code>.\gradlew clean</code></td>
+<td>清除<code>./build</code>文件夹中已经构建的文件。</td>
+</tr>
+<tr>
+<td><code>.\gradlew jar</code></td>
+<td>打包项目。</td>
+</tr>
+</tbody></table>
+<p>值得注意的是，如果你不想看到系统默认的用户文件夹被<code>Gradlew</code>下载的一堆东西（不同版本的Gradle，缓存的依赖包等等，GB级别的数据）塞满，请配置系统环境变量<code>GRADLE_USER_HOME</code>到一个空闲的文件夹，详细设置可以搜下已有的博文。  </p>
+<h3 id="Jetbrain-IntelliJ-IDEA"><a href="#Jetbrain-IntelliJ-IDEA" class="headerlink" title="Jetbrain IntelliJ IDEA"></a>Jetbrain IntelliJ IDEA</h3><p>建议有条件的童鞋申请教育版，社区版也可使用。注意，<code>Mirai-Plugin-Intellij</code>最新版1.1.4支持的最高版本为Idea 2020.1，若安装了最新的Idea 2020.2版本，是无法使用插件的。（装了2020.2版本的我摸索了一下，私改了1.1.5版本插件，好歹能用。）  </p>
+<h3 id="学习一个"><a href="#学习一个" class="headerlink" title="学习一个"></a>学习一个</h3><p>开发Mirai插件需要学习Java或者Kotlin。  </p>
+<h2 id="关于未来机器人方案的一些想法与理解"><a href="#关于未来机器人方案的一些想法与理解" class="headerlink" title="关于未来机器人方案的一些想法与理解"></a>关于未来机器人方案的一些想法与理解</h2><p>聊天机器人本质上是一种Web服务，只不过与用户交互的前端变成了QQ聊天界面，后端服务则有各个机器人框架提供。<br>对于一些简单的业务，如复读机，成员管理，可以直接在机器人插件中编写服务。<br>但对于一些复杂的，涉及较多数据且时间跨度较大的业务，最好将业务部署在另外的前后端分离Web项目上, QQ机器人只负责请求与回应的转发。当然，很多机器人项目本身就是调用已有Web服务的API实现功能。<del>炼铜bot，网抑云</del>  </p>
+<p>以PCR群的Bot为例：  </p>
+<ul>
+<li>简单业务交给插件实现，如定时提醒买药<del>群主女装</del>。  </li>
+<li>发现官方公告功能交给RSS订阅服务或者爬虫（大概是吧，没具体看过）。  </li>
+<li>公会战统计，插件仅监听群员打出的命令，转发Http请求给自己搭建的Web服务器，并根据Resp来自服务器的回应给出相应回复。业务处理及数据管理交由Web服务器管理。可以使机器人和Web服务器共用同一组数据。</li>
+</ul>
+<p>目前个人想到的一些可行的方案：</p>
+<ul>
+<li>机器人使用MiraiOK部署。  </li>
+<li>网站及数据库使用Vue作为前端框架，Django + Django REST Framework作为后端框架，MySQL作为数据库。用户可在Vue前端编辑表格，也可使用机器人命令修改表格。  </li>
+<li>有钱的话可以全塞在国内服务器或者亚洲VPS上，但国内服务器带宽属实蛋疼，还要备案。  </li>
+<li>没钱的话可以考虑搭载在空闲机器上（树莓派似乎可以拉出来遛遛了）。接入宽带的机器可以使用DDNS服务，校园网只能使用Sakura FRP之类的进行内网穿透了。网站之类最好还是部署在境外VPS上，毕竟固定IP还是蛮重要的，使用FRP还要考虑端口问题。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techlorine.github.io/p/cv1dq4k1h7wa5xCP1znano.html" data-id="cm7rqtdhb000b04ul7tow03m4" data-title="基于Mirai的QQ机器人方案" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mirai/" rel="tag">Mirai</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QQBot/" rel="tag">QQBot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-HEXO速成02-建站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/cv1ys4C1t7gHQnFL13nano.html" class="article-date">
+  <time class="dt-published" datetime="2020-07-28T06:58:59.000Z" itemprop="datePublished">2020-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/cv1ys4C1t7gHQnFL13nano.html">HEXO速成02-建站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="HEXO建站准备"><a href="#HEXO建站准备" class="headerlink" title="HEXO建站准备"></a>HEXO建站准备</h2><h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><p>为保证安全的网络连接，本站使用Nginx配置HTTPS服务器。Nginx兼具反向代理，管理页面解析与跳转的作用。目前使用的是ubuntu 16.04 apt中自带的nginx v1.10.3，这个版本比较老，未来将服务器升级到ubuntu 20.04后再考虑用更新的nginx，可能会自己手动编译。当然未来也可以尝试使用Tengine（有中文文档）。  </p>
+<p>外网上关于Nginx配置的资料鱼龙混杂，最好参考<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/configuring_https_servers.html">Nginx官方文档</a>。但Nginx官方提供的默认配置在安全性上还是有所不足，没有排除不安全的RC4等加密算法。<strong>Mozilla</strong>提供了一个自动生成SSL配置的网页工具<a target="_blank" rel="noopener" href="https://ssl-config.mozilla.org/">Mozilla SSL Configuration Generator</a>，一键在线生成合适的SSL配置。  </p>
+<p>此外配置HTTPS需要SSL加密证书，使用Let’s Encrypt提供的<code>certbot-auto</code>脚本进行配置。<code>HTTP-01 challenge</code>页指向Nginx默认页面。（最后还是去namecheap买了HTTPS证书，价格可以接受，最重要的是省心。）<br><em>注：似乎还有DNS认证方式，操作简单很多，还能自动申请泛域名证书，参见<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1eb7060c5ede">此处</a>。</em>  </p>
+<p>80强转443跳转，使用<code>nginx-rewrite</code>，正在配置中。  </p>
+<h3 id="DNS配置"><a href="#DNS配置" class="headerlink" title="DNS配置"></a>DNS配置</h3><p>事先从Freenom嫖了一个域名，并将Cloudflare配置DNS解析。<br>首先，登录Freenom后台将自己域名的DNS服务器改成Cloudflare提供的DNS服务器节点。<br>随后添加DNS解析记录。（当然后来从Namecheap买了正式域名）  </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>@</td>
+<td>IPv4 IP</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>www</td>
+<td>@</td>
+</tr>
+<tr>
+<td>A</td>
+<td>app</td>
+<td>IPv4 IP2</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h3 id="未来可以做的事情"><a href="#未来可以做的事情" class="headerlink" title="未来可以做的事情"></a>未来可以做的事情</h3><ul>
+<li>搞定SSL泛域名证书的</li>
+<li>配置Git服务器用于更新网页, 并配置几个自动任务。</li>
+<li>确定正式的网站域名之后，搞一波SEO优化。</li>
+<li>折腾下DisqusJS，恢复评论区。</li>
+<li>对网页主题的图片、字体等进行定制。</li>
+<li>给Aplayer添加网抑云歌单。</li>
+<li><del>跑路上Django。</del>（简单的博客上个锤子Django）</li>
+<li>捉虫Debug。</li>
+</ul>
+<h3 id="可能有用的项目"><a href="#可能有用的项目" class="headerlink" title="可能有用的项目"></a>可能有用的项目</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ciqulover/disqus-proxy">Disqus Proxy</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techlorine.github.io/p/cv1ys4C1t7gHQnFL13nano.html" data-id="cm7rqtdh1000104ulbluxdo2j" data-title="HEXO速成02-建站" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-HEXO速成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/cv1JB421n7PipWgv1rnano.html" class="article-date">
+  <time class="dt-published" datetime="2020-07-27T06:57:59.000Z" itemprop="datePublished">2020-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/cv1JB421n7PipWgv1rnano.html">HEXO速成</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="HEXO准备"><a href="#HEXO准备" class="headerlink" title="HEXO准备"></a>HEXO准备</h2><h3 id="配置文件更改"><a href="#配置文件更改" class="headerlink" title="配置文件更改"></a>配置文件更改</h3><p>先摸一个配置(<code>./_config.yml</code>)，再摸一个模板(<code>./scaffolds/pages.md</code>), 最后摸一个主题(<code>./theme</code>)。<br>主题直接<code>git clone</code>完事。<br>注意<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Front-matter</a>中不允许带特殊符号(如@@)，否则yaml解析报错。</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo文档</a><br><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo主题</a><br><a target="_blank" rel="noopener" href="https://candinya.com/posts/Kratos-Rebirth/">本Blog使用主题</a>  </p>
+<h3 id="HEXO永久链接优化"><a href="#HEXO永久链接优化" class="headerlink" title="HEXO永久链接优化"></a>HEXO永久链接优化</h3><p>Hexo默认的永久链接过于冗长且对中文不友好。因此参见以下资料更改永久链接。<br>为写入模板，使用<code>TAGabbrlinkTAG</code>作为替换标记。原本计划使用base64后的hash值作为永久链接，但Javascript内置<code>atob()</code>生成的base64字串并非URL安全编码，故使用类似B站bv号的hash。<br><a target="_blank" rel="noopener" href="http://blog.jvaeyhcd.wang/posts/05c9df7e0c47bd64.html">Hexo永久链接优化</a><br><a target="_blank" rel="noopener" href="http://bv2av.com/">AV转BV参考</a></p>
+<h3 id="HEXO生成与部署"><a href="#HEXO生成与部署" class="headerlink" title="HEXO生成与部署"></a>HEXO生成与部署</h3><p>关于Hexo基础操作，网络相关文章众多，略去不表。<br>使用Hexo+Grunt实现任务自动化。未来可以考虑加入Travis CI实现持续集成服务。<br>注意固定名称文件<code>Gruntfile.js</code>。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cf6d7a180aa4">hexo使用grunt实现自动化</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techlorine.github.io/p/cv1JB421n7PipWgv1rnano.html" data-id="cm7rqtdgx000004ularvl9n7o" data-title="HEXO速成" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/URL/" rel="tag">URL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/cv1xB4C1Y7Gts4SX1Ynano.html" class="article-date">
+  <time class="dt-published" datetime="2020-07-27T05:00:00.000Z" itemprop="datePublished">2020-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/cv1xB4C1Y7Gts4SX1Ynano.html">Hello World!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techlorine.github.io/p/cv1xB4C1Y7Gts4SX1Ynano.html" data-id="cm7rqtdhb000a04ul3tdc058h" data-title="Hello World!" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mirai/" rel="tag">Mirai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QQBot/" rel="tag">QQBot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/URL/" rel="tag">URL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mirai/" style="font-size: 10px;">Mirai</a> <a href="/tags/QQBot/" style="font-size: 10px;">QQBot</a> <a href="/tags/URL/" style="font-size: 10px;">URL</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/cv1dq4k1h7wa5xCP1znano.html">基于Mirai的QQ机器人方案</a>
+          </li>
+        
+          <li>
+            <a href="/p/cv1ys4C1t7gHQnFL13nano.html">HEXO速成02-建站</a>
+          </li>
+        
+          <li>
+            <a href="/p/cv1JB421n7PipWgv1rnano.html">HEXO速成</a>
+          </li>
+        
+          <li>
+            <a href="/p/cv1xB4C1Y7Gts4SX1Ynano.html">Hello World!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Techlorine<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
